@@ -1,0 +1,145 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+ annotations:
+   deployment.kubernetes.io/revision: '1'
+ resourceVersion: '1870287703'
+ name: task2
+ uid: a5b43140-601e-40fe-8c9b-17855e2223df
+ creationTimestamp: '2022-11-04T07:23:13Z'
+ generation: 1
+ managedFields:
+   - manager: Mozilla
+     operation: Update
+     apiVersion: apps/v1
+     time: '2022-11-04T07:23:13Z'
+     fieldsType: FieldsV1
+     fieldsV1:
+       'f:metadata':
+         'f:labels':
+           .: {}
+           'f:app': {}
+       'f:spec':
+         'f:progressDeadlineSeconds': {}
+         'f:replicas': {}
+         'f:revisionHistoryLimit': {}
+         'f:selector': {}
+         'f:strategy':
+           'f:rollingUpdate':
+             .: {}
+             'f:maxSurge': {}
+             'f:maxUnavailable': {}
+           'f:type': {}
+         'f:template':
+           'f:metadata':
+             'f:labels':
+               .: {}
+               'f:app': {}
+           'f:spec':
+             'f:containers':
+               'k:{"name":"task2"}':
+                 .: {}
+                 'f:image': {}
+                 'f:imagePullPolicy': {}
+                 'f:name': {}
+                 'f:resources': {}
+                 'f:terminationMessagePath': {}
+                 'f:terminationMessagePolicy': {}
+             'f:dnsPolicy': {}
+             'f:restartPolicy': {}
+             'f:schedulerName': {}
+             'f:securityContext': {}
+             'f:terminationGracePeriodSeconds': {}
+   - manager: kube-controller-manager
+     operation: Update
+     apiVersion: apps/v1
+     time: '2022-11-04T07:23:16Z'
+     fieldsType: FieldsV1
+     fieldsV1:
+       'f:metadata':
+         'f:annotations':
+           .: {}
+           'f:deployment.kubernetes.io/revision': {}
+       'f:status':
+         'f:availableReplicas': {}
+         'f:conditions':
+           .: {}
+           'k:{"type":"Available"}':
+             .: {}
+             'f:lastTransitionTime': {}
+             'f:lastUpdateTime': {}
+             'f:message': {}
+             'f:reason': {}
+             'f:status': {}
+             'f:type': {}
+           'k:{"type":"Progressing"}':
+             .: {}
+             'f:lastTransitionTime': {}
+             'f:lastUpdateTime': {}
+             'f:message': {}
+             'f:reason': {}
+             'f:status': {}
+             'f:type': {}
+         'f:observedGeneration': {}
+         'f:readyReplicas': {}
+         'f:replicas': {}
+         'f:updatedReplicas': {}
+     subresource: status
+ namespace: mfonnn-dev
+ labels:
+   app: task2
+spec:
+ replicas: 3
+ selector:
+   matchLabels:
+     app: task2
+ template:
+   metadata:
+     creationTimestamp: null
+     labels:
+       app: task2
+   spec:
+     containers:
+       - name: task2
+         image: mfon01/assessment2
+         resources: {}
+         terminationMessagePath: /dev/termination-log
+         terminationMessagePolicy: File
+         imagePullPolicy: Always
+         env: []
+     restartPolicy: Always
+     terminationGracePeriodSeconds: 30
+     dnsPolicy: ClusterFirst
+     securityContext: {}
+     schedulerName: default-scheduler
+     imagePullSecrets: []
+ strategy:
+   type: RollingUpdate
+   rollingUpdate:
+     maxSurge: 25%
+     maxUnavailable: 25%
+ revisionHistoryLimit: 10
+ progressDeadlineSeconds: 600
+ paused: false
+status:
+ observedGeneration: 1
+ replicas: 3
+ updatedReplicas: 3
+ readyReplicas: 3
+ availableReplicas: 3
+ conditions:
+   - type: Available
+     status: 'True'
+     lastUpdateTime: '2022-11-04T07:23:16Z'
+     lastTransitionTime: '2022-11-04T07:23:16Z'
+     reason: MinimumReplicasAvailable
+     message: Deployment has minimum availability.
+   - type: Progressing
+     status: 'True'
+     lastUpdateTime: '2022-11-04T07:23:16Z'
+     lastTransitionTime: '2022-11-04T07:23:13Z'
+     reason: NewReplicaSetAvailable
+     message: ReplicaSet "task2-69f5d54f46" has successfully progressed.
+ 
+
+
