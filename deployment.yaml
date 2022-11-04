@@ -141,5 +141,3 @@ status:
      reason: NewReplicaSetAvailable
      message: ReplicaSet "task2-69f5d54f46" has successfully progressed.
  
-
-
